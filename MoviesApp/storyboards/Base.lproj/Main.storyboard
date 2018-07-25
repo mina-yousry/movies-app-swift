@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,6 +45,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="moviePoster" destination="1L3-Jr-yxI" id="fcI-kq-pLP"/>
+                                    <segue destination="WI3-I8-GkG" kind="show" identifier="movieDetails" id="QNW-gF-NkT"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -67,6 +69,30 @@
                 </customObject>
             </objects>
             <point key="canvasLocation" x="945" y="130.98591549295776"/>
+        </scene>
+        <!--Movie Details Controller-->
+        <scene sceneID="b5o-DC-FXQ">
+            <objects>
+                <viewController id="WI3-I8-GkG" customClass="MovieDetailsController" customModule="MoviesApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HYS-43-28p">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jM8-SG-Adi"/>
+                    </view>
+                    <connections>
+                        <outlet property="movieDetailsViewModel" destination="ZYF-GI-LXb" id="uXL-OP-CdP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JfQ-H6-7wp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="SEv-7l-ij2" customClass="MovieDetailsClient" customModule="MoviesApp" customModuleProvider="target"/>
+                <customObject id="ZYF-GI-LXb" customClass="MovieDetailsViewModel" customModule="MoviesApp" customModuleProvider="target">
+                    <connections>
+                        <outlet property="movieDetailsClient" destination="SEv-7l-ij2" id="wzY-fN-4aY"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="1958" y="131"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="unC-mW-SDQ">

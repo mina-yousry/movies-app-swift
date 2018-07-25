@@ -27,5 +27,9 @@ class MoviesHomeViewModel: NSObject {
     func moviesCount() -> Int {
         return movies.count
     }
+    
+    func movieId(forIndexPath indexPath: IndexPath) -> Int {
+        return movies[indexPath.item].id!
+    }
 
 }
