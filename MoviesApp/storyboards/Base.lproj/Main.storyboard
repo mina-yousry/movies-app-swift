@@ -18,19 +18,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YAB-Wq-p8F">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="140" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YwC-rc-DlJ">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCell" id="YwC-rc-DlJ" customClass="MovieCell" customModule="MoviesApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="140" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="140" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1L3-Jr-yxI">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="200"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="1L3-Jr-yxI" secondAttribute="bottom" id="0kk-zG-tYI"/>
+                                    <constraint firstAttribute="trailing" secondItem="1L3-Jr-yxI" secondAttribute="trailing" id="Dme-lw-aaI"/>
+                                    <constraint firstItem="1L3-Jr-yxI" firstAttribute="leading" secondItem="YwC-rc-DlJ" secondAttribute="leading" id="ShP-jp-28o"/>
+                                    <constraint firstItem="1L3-Jr-yxI" firstAttribute="top" secondItem="YwC-rc-DlJ" secondAttribute="top" id="gAT-pd-8BC"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="moviePoster" destination="1L3-Jr-yxI" id="fcI-kq-pLP"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -40,6 +54,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="Movies App" id="ozv-RT-sVR"/>
                     <connections>
+                        <outlet property="moviesCollectionView" destination="72l-DF-7jX" id="MMT-Wm-joE"/>
                         <outlet property="moviesHomeViewModel" destination="tqx-KU-22I" id="fpx-3m-2pD"/>
                     </connections>
                 </collectionViewController>
@@ -51,7 +66,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="945" y="131"/>
+            <point key="canvasLocation" x="945" y="130.98591549295776"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="unC-mW-SDQ">

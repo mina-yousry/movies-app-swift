@@ -38,4 +38,12 @@ class Movie: Codable {
         case releaseDate = "release_date"
     }
     
+    func posterUrl() -> String {
+        if let relativeUrl = self.posterPath {
+            return "https://image.tmdb.org/t/p/w185/"+relativeUrl
+        }else{
+            return ""
+        }
+    }
+    
 }

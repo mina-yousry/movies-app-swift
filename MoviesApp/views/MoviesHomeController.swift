@@ -7,24 +7,26 @@
 //
 
 import UIKit
+import SDWebImage
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "movieCell"
 
 class MoviesHomeController: UICollectionViewController {
     
+    @IBOutlet var moviesCollectionView: UICollectionView!
     @IBOutlet var moviesHomeViewModel: MoviesHomeViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         moviesHomeViewModel.fetchMovies(completion: {
-            
+            self.moviesCollectionView.reloadData()
         })
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.register(MovieCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
@@ -52,14 +54,14 @@ class MoviesHomeController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return moviesHomeViewModel.moviesCount()
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MovieCell
     
-        // Configure the cell
+        cell.moviePoster.sd_setImage(with: URL(string: moviesHomeViewModel.imageUrl(forItem: indexPath.item)), placeholderImage: UIImage(named: "default-placeholder.png"))
     
         return cell
     }
