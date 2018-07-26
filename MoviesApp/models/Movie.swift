@@ -19,7 +19,6 @@ class Movie: Codable {
     let posterPath: String?
     let originalLanguage: String?
     let originalTitle: String?
-    let genreIDS: [Int]
     let backdropPath: String?
     let adult: Bool?
     let overview, releaseDate: String?
@@ -32,18 +31,8 @@ class Movie: Codable {
         case posterPath = "poster_path"
         case originalLanguage = "original_language"
         case originalTitle = "original_title"
-        case genreIDS = "genre_ids"
         case backdropPath = "backdrop_path"
         case adult, overview
         case releaseDate = "release_date"
     }
-    
-    func posterUrl() -> String {
-        if let relativeUrl = self.posterPath {
-            return "https://image.tmdb.org/t/p/w500/"+relativeUrl
-        }else{
-            return ""
-        }
-    }
-    
 }

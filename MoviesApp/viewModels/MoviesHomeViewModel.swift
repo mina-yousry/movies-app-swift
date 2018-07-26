@@ -12,16 +12,36 @@ class MoviesHomeViewModel: NSObject {
     
     @IBOutlet var moviesClient: MoviesClient!
     var movies = [Movie]()
+    var firstTime = true
+    var pageCount = 1
+    var totalPages: Int?
     
     func fetchMovies(completion: @escaping ()->()) {
-        moviesClient.getMovies(page: 1, completion: { fetchedMovies in
-            self.movies.append(contentsOf: fetchedMovies)
-            completion()
-        })
+        if firstTime{
+            firstTime = false
+            moviesClient.getMovies(page: pageCount, completion: { fetchedMovies,totalPages in
+                self.movies.append(contentsOf: fetchedMovies)
+                self.totalPages = totalPages
+                completion()
+            })
+        }else{
+            if pageCount<self.totalPages!{
+                pageCount = pageCount+1
+                moviesClient.getMovies(page: pageCount, completion: { fetchedMovies,totalPages in
+                    self.movies.append(contentsOf: fetchedMovies)
+                    completion()
+                })
+            }
+        }
     }
     
     func imageUrl(forItem item: Int) -> String {
-        return movies[item].posterUrl()
+        let imgUrlMaker = PosterPathMaker()
+        if let path = movies[item].posterPath {
+            return imgUrlMaker.makeImgUrl(posterPath: path)
+        }else{
+            return ""
+        }
     }
     
     func moviesCount() -> Int {
@@ -31,5 +51,5 @@ class MoviesHomeViewModel: NSObject {
     func movieId(forIndexPath indexPath: IndexPath) -> Int {
         return movies[indexPath.item].id!
     }
-
+    
 }

@@ -52,8 +52,9 @@ class productionTableViewController: UITableViewController {
         cell.companyImage.layer.borderColor = UIColor.lightGray.cgColor
         
         if let companies = productionCompanies{
-            if companies[indexPath.row].logoPath != nil{
-            cell.companyImage.sd_setImage(with: URL(string: companies[indexPath.row].logoUrl()), placeholderImage: UIImage(named: "default-placeholder.png"))
+            if let path = companies[indexPath.row].logoPath {
+                let imgUrlMaker = PosterPathMaker()
+            cell.companyImage.sd_setImage(with: URL(string: imgUrlMaker.makeImgUrl(posterPath: path)), placeholderImage: UIImage(named: "default-placeholder.png"))
             }
             cell.companyName.text = companies[indexPath.row].name
         }

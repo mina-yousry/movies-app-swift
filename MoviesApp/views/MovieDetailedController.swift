@@ -55,9 +55,13 @@ class MovieDetailedController: UITableViewController {
     
     func setViews(movie: DetailedMovie) {
         
+        let imgUrlMaker = PosterPathMaker()
         moviePoster.contentMode = UIViewContentMode.scaleAspectFill
         moviePoster.clipsToBounds = true
-        moviePoster.sd_setImage(with: URL(string: movie.posterUrl()), placeholderImage: UIImage(named: "default-placeholder.png"))
+        if let path = movie.posterPath {
+            moviePoster.sd_setImage(with: URL(string: imgUrlMaker.makeImgUrl(posterPath: path)), placeholderImage: UIImage(named: "default-placeholder.png"))
+        }
+        
         
         if let budget = movie.budget {
             budgetLbl.text = String(budget)+"$"

@@ -76,6 +76,15 @@ class MoviesHomeController: UICollectionViewController,UICollectionViewDelegateF
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if (indexPath.row == moviesHomeViewModel.moviesCount() - 2 ) {
+            moviesHomeViewModel.fetchMovies(completion: {
+                self.moviesCollectionView.reloadData()
+            })
+        }
+    }
+    
  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
        return CGSize(width: (self.moviesCollectionView.frame.width / 2)-5
         , height: self.moviesCollectionView.frame.width)
