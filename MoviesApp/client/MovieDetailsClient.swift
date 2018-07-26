@@ -23,7 +23,6 @@ class MovieDetailsClient: NSObject {
                 do{
                     let decoder = JSONDecoder()
                     let movie = try decoder.decode(DetailedMovie.self, from: data)
-                    print(movie.originalTitle!)
                     completion(movie)
                 }catch let er{
                     print("Err",er)
