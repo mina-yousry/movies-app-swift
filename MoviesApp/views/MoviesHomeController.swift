@@ -68,7 +68,7 @@ class MoviesHomeController: UICollectionViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "movieDetails" {
-            let nextScene =  segue.destination as! MovieDetailsController
+            let nextScene =  segue.destination as! MovieDetailedController
             if let indexPath = moviesCollectionView.indexPathsForSelectedItems {
                 let pressedMovieId = moviesHomeViewModel.movieId(forIndexPath: indexPath[0])
                 nextScene.movieId = pressedMovieId

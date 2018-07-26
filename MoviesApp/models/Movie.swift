@@ -40,7 +40,7 @@ class Movie: Codable {
     
     func posterUrl() -> String {
         if let relativeUrl = self.posterPath {
-            return "https://image.tmdb.org/t/p/w185/"+relativeUrl
+            return "https://image.tmdb.org/t/p/w500/"+relativeUrl
         }else{
             return ""
         }

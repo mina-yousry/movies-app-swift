@@ -49,4 +49,12 @@ class DetailedMovie: Codable {
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
     }
+    
+    func posterUrl() -> String {
+        if let relativeUrl = self.posterPath {
+            return "https://image.tmdb.org/t/p/w500/"+relativeUrl
+        }else{
+            return ""
+        }
+    }
 }

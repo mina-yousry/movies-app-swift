@@ -19,4 +19,12 @@ class ProductionCompany: Codable {
         case name
         case originCountry = "origin_country"
     }
+    
+    func logoUrl() -> String {
+        if let relativeUrl = self.logoPath {
+            return "https://image.tmdb.org/t/p/w500/"+relativeUrl
+        }else{
+            return ""
+        }
+    }
 }
