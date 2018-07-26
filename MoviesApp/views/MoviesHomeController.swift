@@ -11,7 +11,7 @@ import SDWebImage
 
 private let reuseIdentifier = "movieCell"
 
-class MoviesHomeController: UICollectionViewController {
+class MoviesHomeController: UICollectionViewController,UICollectionViewDelegateFlowLayout {
     
     @IBOutlet var moviesCollectionView: UICollectionView!
     @IBOutlet var moviesHomeViewModel: MoviesHomeViewModel!
@@ -74,6 +74,11 @@ class MoviesHomeController: UICollectionViewController {
                 nextScene.movieId = pressedMovieId
             }
         }
+    }
+    
+ func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+       return CGSize(width: (self.moviesCollectionView.frame.width / 2)-5
+        , height: self.moviesCollectionView.frame.width)
     }
 
 }

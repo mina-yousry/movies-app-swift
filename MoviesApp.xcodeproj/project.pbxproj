@@ -22,6 +22,7 @@
 		39955E502108E85B002431E6 /* ProductionCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39955E4F2108E85B002431E6 /* ProductionCountry.swift */; };
 		39955E522108E874002431E6 /* SpokenLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39955E512108E874002431E6 /* SpokenLanguage.swift */; };
 		39955E542108ECF1002431E6 /* BelongsToCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39955E532108ECF1002431E6 /* BelongsToCollection.swift */; };
+		39AD12F12109EC6E00A4E0B1 /* Cosmos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39AD12F22109EC6E00A4E0B1 /* Cosmos.framework */; };
 		39EAA2B02107B96E001C0E40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EAA2AF2107B96E001C0E40 /* AppDelegate.swift */; };
 		39EAA2B52107B96E001C0E40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39EAA2B32107B96E001C0E40 /* Main.storyboard */; };
 		39EAA2B82107B96E001C0E40 /* MoviesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 39EAA2B62107B96E001C0E40 /* MoviesApp.xcdatamodeld */; };
@@ -50,6 +51,7 @@
 		39955E4F2108E85B002431E6 /* ProductionCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductionCountry.swift; sourceTree = "<group>"; };
 		39955E512108E874002431E6 /* SpokenLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpokenLanguage.swift; sourceTree = "<group>"; };
 		39955E532108ECF1002431E6 /* BelongsToCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BelongsToCollection.swift; sourceTree = "<group>"; };
+		39AD12F22109EC6E00A4E0B1 /* Cosmos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Cosmos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39EAA2AC2107B96E001C0E40 /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39EAA2AF2107B96E001C0E40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39EAA2B42107B96E001C0E40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39AD12F12109EC6E00A4E0B1 /* Cosmos.framework in Frameworks */,
 				AFF72066CAAB6497FADD3589 /* Pods_MoviesApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +182,7 @@
 		3E9963C21230C4F4DF66194A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				39AD12F22109EC6E00A4E0B1 /* Cosmos.framework */,
 				B22140FD12E71106CC7E06E7 /* Pods_MoviesApp.framework */,
 			);
 			name = Frameworks;
@@ -272,11 +276,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MoviesApp/Pods-MoviesApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

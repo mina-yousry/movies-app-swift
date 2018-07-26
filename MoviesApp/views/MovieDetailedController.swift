@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import Cosmos
 
 class MovieDetailedController: UITableViewController {
     
@@ -20,6 +21,7 @@ class MovieDetailedController: UITableViewController {
     @IBOutlet weak var budgetBG: UIImageView!
     @IBOutlet weak var productionCell: UITableViewCell!
     @IBOutlet weak var productionCompaniesTableView: UITableView!
+    @IBOutlet weak var ratingView: CosmosView!
     
     @IBOutlet var movieDetailsViewModel: MovieDetailsViewModel!
     @IBOutlet var productionController: productionTableViewController!
@@ -53,8 +55,8 @@ class MovieDetailedController: UITableViewController {
     
     func setViews(movie: DetailedMovie) {
         
-        //moviePoster.contentMode = UIViewContentMode.scaleAspectFill
-        //moviePoster.clipsToBounds = true
+        moviePoster.contentMode = UIViewContentMode.scaleAspectFill
+        moviePoster.clipsToBounds = true
         moviePoster.sd_setImage(with: URL(string: movie.posterUrl()), placeholderImage: UIImage(named: "default-placeholder.png"))
         
         if let budget = movie.budget {
@@ -64,6 +66,11 @@ class MovieDetailedController: UITableViewController {
         if let title = movie.title {
             movieNameLbl.text = title
             self.title = title
+        }
+        
+        if let rate = movie.voteAverage {
+            ratingView.rating = rate/2.0
+            print(rate/2.0)
         }
         
         if let date = movie.releaseDate {
