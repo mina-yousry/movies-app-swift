@@ -8,8 +8,8 @@
 
 import UIKit
 
+// a class to create full image path from the api
 class PosterPathMaker: NSObject {
-    
     func makeImgUrl(posterPath: String) -> String {
         return "https://image.tmdb.org/t/p/w500/"+posterPath
     }

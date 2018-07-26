@@ -8,6 +8,7 @@
 
 import UIKit
 
+// this is a class to make curved UIImageView
 @IBDesignable
 class CurvedUIImageView: UIImageView {
     
@@ -21,6 +22,7 @@ class CurvedUIImageView: UIImageView {
         return UIScreen.main.bounds.height
     }
 
+    //setting the shape of the mask to be applied on the image
     func pathCurvedForView(givenView: UIView, curvedPercent:CGFloat) ->UIBezierPath
     {
         let arrowPath = UIBezierPath()
@@ -40,8 +42,7 @@ class CurvedUIImageView: UIImageView {
         return arrowPath
     }
     
-
-    
+    //applying the mask to the image 
     @IBInspectable var curvedPercent : CGFloat = 0{
         didSet{
             guard curvedPercent <= 1 && curvedPercent >= 0 else{
@@ -53,8 +54,6 @@ class CurvedUIImageView: UIImageView {
             shapeLayer.frame = self.bounds
             shapeLayer.masksToBounds = true
             self.layer.mask = shapeLayer
-            
-            
         }
     }
 

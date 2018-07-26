@@ -88,8 +88,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dNY-ma-q8Q" customClass="CurvedUIImageView" customModule="MoviesApp" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="00Q-xw-WEW" customClass="CurvedUIImageView" customModule="MoviesApp" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="380" height="330"/>
+                                                    <color key="backgroundColor" red="0.78402283031088082" green="0.78402283031088082" blue="0.78402283031088082" alpha="0.54225352112676062" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="curvedPercent">
+                                                            <real key="value" value="0.29999999999999999"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dNY-ma-q8Q" customClass="CurvedUIImageView" customModule="MoviesApp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="380" height="320"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="curvedPercent">
                                                             <real key="value" value="0.29999999999999999"/>
@@ -121,9 +131,13 @@
                                                 <constraint firstItem="dNY-ma-q8Q" firstAttribute="top" secondItem="srZ-c9-krU" secondAttribute="top" id="8sU-t3-ShB"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="4jT-hk-Nf7" secondAttribute="bottom" constant="5" id="NvP-I8-IXY"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="t9w-Ye-e2Q" secondAttribute="trailing" constant="20" id="Rkg-Yk-IGa"/>
+                                                <constraint firstItem="00Q-xw-WEW" firstAttribute="leading" secondItem="srZ-c9-krU" secondAttribute="leading" id="Six-Ar-4MZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="00Q-xw-WEW" secondAttribute="bottom" constant="-30" id="Usy-uC-qA3"/>
+                                                <constraint firstItem="00Q-xw-WEW" firstAttribute="top" secondItem="srZ-c9-krU" secondAttribute="top" id="dnI-4J-jrX"/>
                                                 <constraint firstItem="dNY-ma-q8Q" firstAttribute="leading" secondItem="srZ-c9-krU" secondAttribute="leading" id="fcn-CO-TaS"/>
                                                 <constraint firstAttribute="trailing" secondItem="dNY-ma-q8Q" secondAttribute="trailing" constant="-60" id="j89-Al-TiI"/>
-                                                <constraint firstAttribute="bottom" secondItem="dNY-ma-q8Q" secondAttribute="bottom" constant="-30" id="qlO-6p-tI2"/>
+                                                <constraint firstAttribute="trailing" secondItem="00Q-xw-WEW" secondAttribute="trailing" constant="-60" id="oLj-Wd-JGj"/>
+                                                <constraint firstAttribute="bottom" secondItem="dNY-ma-q8Q" secondAttribute="bottom" constant="-20" id="qlO-6p-tI2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

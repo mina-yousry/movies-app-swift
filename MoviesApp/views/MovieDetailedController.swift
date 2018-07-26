@@ -31,13 +31,15 @@ class MovieDetailedController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        moviePoster.layer.shadowColor = UIColor.darkGray.cgColor
-//        moviePoster.layer.shadowOpacity = 1
-//        moviePoster.layer.shadowPath = self.shadowCurvedForView(givenView: moviePoster,curvedPercent: 0.3).cgPath
-//        moviePoster.layer.shadowRadius = 5
+        //set navigation bar buttons
+        let heartImage    = UIImage(named: "heart.png")!
+        let shareImage  = UIImage(named: "share.png")!
+        let likeButton   = UIBarButtonItem(image: heartImage,  style: .plain, target: self, action: #selector(MovieDetailedController.didTapLikeButton))
+        let shareButton = UIBarButtonItem(image: shareImage,  style: .plain, target: self, action: #selector(MovieDetailedController.didTapShareButton))
+        navigationItem.rightBarButtonItems = [shareButton, likeButton]
         
+        //fetching movie details
         if let id = movieId {
-            print(id)
             movieDetailsViewModel.movie(withId: id, completion: {movie in
                 self.setViews(movie: movie)
                 self.productionController.productionCompanies = movie.productionCompanies
@@ -50,42 +52,47 @@ class MovieDetailedController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    //set the view according to movie details
     func setViews(movie: DetailedMovie) {
         
+        //setting movie poster
         let imgUrlMaker = PosterPathMaker()
         moviePoster.contentMode = UIViewContentMode.scaleAspectFill
-        moviePoster.clipsToBounds = true
         if let path = movie.posterPath {
             moviePoster.sd_setImage(with: URL(string: imgUrlMaker.makeImgUrl(posterPath: path)), placeholderImage: UIImage(named: "default-placeholder.png"))
         }
         
-        
+        //budget label
         if let budget = movie.budget {
             budgetLbl.text = String(budget)+"$"
         }
         
+        //movie title label
         if let title = movie.title {
             movieNameLbl.text = title
             self.title = title
         }
         
+        //setting rate view
         if let rate = movie.voteAverage {
             ratingView.rating = rate/2.0
-            print(rate/2.0)
         }
         
+        //setting date
         if let date = movie.releaseDate {
             var dateParts = date.components(separatedBy: "-")
             movieYearLbl.text = dateParts[0]
         }
         
+        //setting budegt background image
         budgetBG.layer.cornerRadius = (budgetBG.frame.height)/2
         budgetBG.layer.masksToBounds=true
         budgetBG.layer.borderWidth=3
         budgetBG.layer.borderColor = UIColor.lightGray.cgColor
+        
+        //movie generes label
         if movie.genres.count > 0 {
             var genersText = movie.genres[0].name!
             if movie.genres.count>1{
@@ -96,67 +103,20 @@ class MovieDetailedController: UITableViewController {
             movieGenersLbl.text = genersText
         }
         
+        //overview text
         if let overview = movie.overview {
             movieOverviewTxt.text = overview
         }
     }
     
-    
-    // Screen width.
-    public var screenWidth: CGFloat {
-        return UIScreen.main.bounds.width
+    @objc func didTapShareButton() {
+        //something to do when share button is pressed
+        print("Share button clicked")
     }
     
-    // Screen height.
-    public var screenHeight: CGFloat {
-        return UIScreen.main.bounds.height
+    @objc func didTapLikeButton() {
+        //something to do when like button is pressed
+        print("Like button clicked")
     }
-    
-//    func shadowCurvedForView(givenView: UIView, curvedPercent:CGFloat) ->UIBezierPath
-//    {
-//        let arrowPath = UIBezierPath()
-//
-//        arrowPath.move(to: CGPoint(x:0, y:0))
-//
-//        arrowPath.addLine(to: CGPoint(x:screenWidth, y:0))
-//
-//        arrowPath.addLine(to: CGPoint(x:screenWidth, y:(givenView.bounds.size.height - (givenView.bounds.size.height*curvedPercent))+30))
-//
-//        arrowPath.addQuadCurve(to: CGPoint(x:0, y:(givenView.bounds.size.height - (givenView.bounds.size.height*curvedPercent)+30)), controlPoint: CGPoint(x:screenWidth/2, y:givenView.bounds.size.height))
-//
-//        arrowPath.addLine(to: CGPoint(x:0, y:0))
-//
-//        arrowPath.close()
-//
-//        return arrowPath
-//    }
 }
-
-//extension MovieDetailedController{
-//
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if let movie = self.displayedMovie {
-//            return movie.productionCompanies.count
-//        }else{
-//            return 0
-//        }
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "companyCell", for: indexPath) as! CompanyCell
-//
-//        if let movie = self.displayedMovie {
-//            cell.companyImage.layer.cornerRadius = (budgetBG.frame.height)/2
-//            cell.companyImage.sd_setImage(with: URL(string: movie.productionCompanies[indexPath.row].logoPath!), placeholderImage: UIImage(named: "default-placeholder.png"))
-//            cell.companyName.text = movie.productionCompanies[indexPath.row].name
-//        }
-//
-//        return cell
-//    }
-//
-//}
 
